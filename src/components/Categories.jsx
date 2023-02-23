@@ -1,3 +1,3 @@
 export default function Categories() {
-  return <p>Categories component</p>;
+  return <button type="button">CHECK STATUS</button>;
 }
