@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -8,7 +9,7 @@ const booksSlice = createSlice({
   name: 'Books slice',
   initialState,
   reducers: {
-    addBook: (state, { payload }) => ({ ...state, payload }),
+    addBook: (state, { payload }) => ({ books: [...state.books, payload] }),
     removeBook: (state, action) => {
       console.log(state, action);
     },
