@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
+import Button from './Button';
 
 export default function AddBook() {
   const titleInput = useRef();
@@ -11,6 +12,19 @@ export default function AddBook() {
     author: '',
   });
 
+  const add = () => {
+    if (book.title.trim().length === 0 || book.author.trim().length === 0) return;
+    dispatch(addBook({
+      item_id: uuidv4(),
+      ...book,
+    }));
+    titleInput.current.focus();
+    setBook({
+      title: '',
+      author: '',
+    });
+  };
+
   const onChange = (element) => {
     const { name, value } = element;
     setBook((prev) => ({ ...prev, [name]: value }));
@@ -18,20 +32,7 @@ export default function AddBook() {
   return (
     <>
       <h2>ADD NEW BOOK</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(addBook({
-            id: uuidv4(),
-            ...book,
-          }));
-          titleInput.current.focus();
-          setBook({
-            title: '',
-            author: '',
-          });
-        }}
-      >
+      <form>
         <input
           ref={titleInput}
           name="title"
@@ -45,9 +46,7 @@ export default function AddBook() {
           value={book.author}
           onChange={({ target }) => onChange(target)}
         />
-        <button type="submit">
-          ADD BOOK
-        </button>
+        <Button run={add} text="ADD BOOK" />
       </form>
     </>
   );
