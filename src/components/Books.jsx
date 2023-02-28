@@ -1,25 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { useSelector } from 'react-redux';
 import AddBook from './AddBook';
 import Book from './Book';
 
-const books = [
-  {
-    id: 1,
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-  },
-  {
-    id: 2,
-    title: 'Dune',
-    author: 'Frank Herbert',
-  },
-  {
-    id: 3,
-    title: 'Capital in the Twenty-First Century',
-    author: 'Suzanne Collins',
-  },
-];
-
 export default function Books() {
+  const { books } = useSelector((store) => store.books);
   const booksList = books.map((book) => (
     <Book
       key={book.id}
