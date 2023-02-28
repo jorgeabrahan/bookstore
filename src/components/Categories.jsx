@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useSelector, useDispatch } from 'react-redux';
 import { checkStatus } from '../redux/categories/categoriesSlice';
 
