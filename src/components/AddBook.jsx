@@ -1,10 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
 
 export default function AddBook() {
+  const titleInput = useRef();
   const dispatch = useDispatch();
   const [book, setBook] = useState({
     title: '',
@@ -25,9 +26,15 @@ export default function AddBook() {
             id: uuidv4(),
             ...book,
           }));
+          titleInput.current.focus();
+          setBook({
+            title: '',
+            author: '',
+          });
         }}
       >
         <input
+          ref={titleInput}
           name="title"
           placeholder="Book title"
           value={book.title}
