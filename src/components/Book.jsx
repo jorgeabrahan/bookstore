@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
 import Button from './Button';
+import './Books.css';
 
 export default function Book({
-  id, title, author,
+  id, category, title, author,
 }) {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
