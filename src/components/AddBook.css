@@ -6,14 +6,3 @@
 .addform__input {
   padding: 0.5rem 1rem;
 }
-
-.book__addform button {
-  padding: 0.6rem 2rem;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 1rem;
-  background-color: #0290ff;
-  text-align: center;
-  color: #fff;
-  border: none;
-}
