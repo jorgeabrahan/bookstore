@@ -43,15 +43,6 @@
   margin-bottom: 1rem;
 }
 
-.chapter__button {
-  padding: 0.6rem 2rem;
-  border-radius: 5px;
-  background-color: #0290ff;
-  text-align: center;
-  color: #fff;
-  border: none;
-}
-
 .book__category {
   color: #939293;
   font-weight: bold;
