@@ -1,20 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
 
 const initialState = {
   books: [],
+  apiId: null,
+  appCreationStatus: 'idle',
+  loadBooksStatus: 'idle',
+  error: null,
 };
 
 const booksSlice = createSlice({
   name: 'Books slice',
   initialState,
   reducers: {
-    addBook: (state, { payload }) => ({ books: [...state.books, payload] }),
-    removeBook: (state, { payload }) => ({
-      books: state.books.filter((book) => book.id !== payload),
+    setBookstoreId: (state, { payload }) => ({
+      ...state, apiId: payload, appCreationStatus: 'succeeded',
     }),
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const { setBookstoreId } = booksSlice.actions;
 
 export default booksSlice.reducer;
