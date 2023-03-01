@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { checkStatus, filterByCountry } from '../redux/categories/categoriesSlice';
 import Button from './Button';
+import './Categories.css';
 
 export default function Categories() {
   const [country, setCountry] = useState('australia');
@@ -9,9 +10,10 @@ export default function Categories() {
   const { categories } = useSelector((store) => store.categories);
 
   return (
-    <>
-      {typeof categories === 'string' && <p>{categories}</p>}
+    <div className="center categories">
+      {typeof categories === 'string' && <p className="categories__message">{categories}</p>}
       <button
+        className="blue-button mt-1rem"
         type="button"
         onClick={() => {
           dispatch(checkStatus());
@@ -20,8 +22,10 @@ export default function Categories() {
         CHECK STATUS
       </button>
       <br />
-      <label htmlFor="country">
-        Select country:
+      <label htmlFor="country" className="categories__filter">
+        <span>
+          Select country:
+        </span>
         <select
           id="country"
           name="country"
@@ -33,7 +37,7 @@ export default function Categories() {
           <option value="unitedStates">United States</option>
         </select>
       </label>
-      <Button run={() => dispatch(filterByCountry(country))} text="Filter by country" />
-    </>
+      <Button run={() => dispatch(filterByCountry(country))} text="Filter by country" className="blue-button" />
+    </div>
   );
 }

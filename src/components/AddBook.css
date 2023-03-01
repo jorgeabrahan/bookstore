@@ -1,0 +1,8 @@
+.book__addform {
+  display: flex;
+  gap: 2rem;
+}
+
+.addform__input {
+  padding: 0.5rem 1rem;
+}

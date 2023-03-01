@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createBookstoreApp, loadBooks, setBookstoreId } from '../redux/books/booksSlice';
 import AddBook from './AddBook';
 import Book from './Book';
+import './Books.css';
 
 export default function Books() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function Books() {
   /* Effect to load books once the app is initialized */
   useEffect(() => {
     if (apiId === null) return;
+    if (books.length >= 1) return;
     dispatch(loadBooks());
   }, [dispatch, apiId]);
 
@@ -30,6 +32,7 @@ export default function Books() {
     <Book
       key={book.item_id}
       id={book.item_id}
+      category={book.category}
       title={book.title}
       author={book.author}
     />
@@ -40,11 +43,13 @@ export default function Books() {
 
   let loadStatusMsg = <p>Loading books...</p>;
   if (loadBooksStatus === 'failed') loadStatusMsg = <p>{error}</p>;
+  if (loadBooksStatus === 'succeeded' && books.length === 0) loadStatusMsg = <p>You have no books</p>;
   return (
     <>
-      <section>
+      <section className="center books-container">
         {appCreationStatus !== 'succeeded' && appStatusMsg}
-        {loadBooksStatus !== 'succeeded' ? loadStatusMsg : booksList}
+        {books.length > 0 ? booksList : loadStatusMsg}
+        <hr className="books__divisor" />
       </section>
       <AddBook />
     </>

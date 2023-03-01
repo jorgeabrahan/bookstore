@@ -1,6 +1,8 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fafafa;
 }
 
 *,
@@ -46,4 +48,48 @@ h6 {
 
 button {
   cursor: pointer;
+}
+
+.center {
+  max-width: 1024px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.secondary {
+  color: #939293;
+}
+
+.mt-1rem {
+  margin-top: 1rem;
+}
+
+.mb-0-5rem {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2rem {
+  margin-bottom: 2rem;
+}
+
+.fs-1-2rem {
+  font-size: 1.2rem;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.blue-button {
+  padding: 0.6rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #0290ff;
+  text-align: center;
+  color: #fff;
+  border: none;
+}
+
+.bold {
+  font-weight: bold;
 }

@@ -1,12 +1,21 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ run, text, disabled }) => {
+const Button = ({
+  run, text, disabled, className,
+}) => {
   const onClick = (e) => {
     e.preventDefault();
     run();
   };
   return (
-    <button type="button" onClick={onClick} disabled={disabled}>{text}</button>
+    <button
+      className={className}
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {text}
+    </button>
   );
 };
 
@@ -16,9 +25,11 @@ Button.propTypes = {
   run: PropTypes.func.isRequired,
   text: PropTypes.string,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
   text: 'button',
   disabled: false,
+  className: '',
 };
