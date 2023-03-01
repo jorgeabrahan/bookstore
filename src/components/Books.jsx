@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createBookstoreApp, loadBooks, setBookstoreId } from '../redux/books/booksSlice';
 import AddBook from './AddBook';
 import Book from './Book';
+import './Books.css';
 
 export default function Books() {
   const dispatch = useDispatch();
@@ -43,9 +44,10 @@ export default function Books() {
   if (loadBooksStatus === 'failed') loadStatusMsg = <p>{error}</p>;
   return (
     <>
-      <section>
+      <section className="center books-container">
         {appCreationStatus !== 'succeeded' && appStatusMsg}
         {loadBooksStatus !== 'succeeded' ? loadStatusMsg : booksList}
+        <hr className="books__divisor" />
       </section>
       <AddBook />
     </>

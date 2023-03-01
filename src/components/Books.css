@@ -1,0 +1,9 @@
+.books-container, .books__divisor {
+  --margin-divisor: 2rem;
+  margin-block-start: var(--margin-divisor);
+}
+
+.books__divisor {
+  margin-block-end: var(--margin-divisor);
+  border: 1px solid #e8e8e8;
+}
