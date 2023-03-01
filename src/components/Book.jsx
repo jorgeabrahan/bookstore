@@ -51,7 +51,7 @@ export default function Book({
       <div className="book__chapter">
         <p className="secondary">CURRENT CHAPTER</p>
         <h3 className="chapter__num">Chapter n</h3>
-        <button className="chapter__button" type="button">UPDATE PROGRESS</button>
+        <button className="blue-button" type="button">UPDATE PROGRESS</button>
       </div>
     </div>
   );
