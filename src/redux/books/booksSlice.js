@@ -31,7 +31,7 @@ export const loadBooks = createAsyncThunk('bookstore/load', (arg, { getState }) 
     const state = getState();
     axios.get(`${baseUrl}/apps/${state.books.apiId}/books`)
       .then(({ data }) => {
-        if (data === '') {
+        if (data === '' || (typeof data === 'object' && Object.entries(data).length === 0)) {
           resolve([]);
           return;
         }

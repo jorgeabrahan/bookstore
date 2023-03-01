@@ -26,7 +26,7 @@ export default function Books() {
     if (apiId === null) return;
     if (books.length >= 1) return;
     dispatch(loadBooks());
-  }, [dispatch, apiId, books]);
+  }, [dispatch, apiId]);
 
   const booksList = books.map((book) => (
     <Book
@@ -43,11 +43,12 @@ export default function Books() {
 
   let loadStatusMsg = <p>Loading books...</p>;
   if (loadBooksStatus === 'failed') loadStatusMsg = <p>{error}</p>;
+  if (loadBooksStatus === 'succeeded' && books.length === 0) loadStatusMsg = <p>You have no books</p>;
   return (
     <>
       <section className="center books-container">
         {appCreationStatus !== 'succeeded' && appStatusMsg}
-        {loadBooksStatus !== 'succeeded' ? loadStatusMsg : booksList}
+        {books.length > 0 ? booksList : loadStatusMsg}
         <hr className="books__divisor" />
       </section>
       <AddBook />
