@@ -1,28 +1,35 @@
 import { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook } from '../redux/books/booksSlice';
 import Button from './Button';
 
 export default function AddBook() {
   const titleInput = useRef();
   const dispatch = useDispatch();
+  const { adding } = useSelector((store) => store.books);
   const [book, setBook] = useState({
     title: '',
     author: '',
   });
+  const [error, setError] = useState('');
 
   const add = () => {
     if (book.title.trim().length === 0 || book.author.trim().length === 0) return;
-    dispatch(addBook({
-      item_id: uuidv4(),
-      ...book,
-    }));
-    titleInput.current.focus();
-    setBook({
-      title: '',
-      author: '',
-    });
+    try {
+      dispatch(postBook({
+        item_id: uuidv4(),
+        ...book,
+        category: 'none',
+      })).unwrap();
+      titleInput.current.focus();
+      setBook({
+        title: '',
+        author: '',
+      });
+    } catch (error) {
+      setError(error);
+    }
   };
 
   const onChange = (element) => {
@@ -46,7 +53,8 @@ export default function AddBook() {
           value={book.author}
           onChange={({ target }) => onChange(target)}
         />
-        <Button run={add} text="ADD BOOK" />
+        <Button run={add} text="ADD BOOK" disabled={adding} />
+        {error !== '' && <p>{error}</p>}
       </form>
     </>
   );
