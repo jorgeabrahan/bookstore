@@ -65,6 +65,19 @@ export const postBook = createAsyncThunk('bookstore/post', (book, { getState }) 
   })
 ));
 
+export const removeBook = createAsyncThunk('bookstore/remove', (id, { getState }) => (
+  new Promise((resolve, reject) => {
+    const state = getState();
+    axios.delete(`${baseUrl}/apps/${state.books.apiId}/books/${id}`, { item_id: id })
+      .then(() => {
+        resolve(id);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+));
+
 const booksSlice = createSlice({
   name: 'Books slice',
   initialState,
