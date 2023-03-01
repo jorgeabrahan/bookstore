@@ -9,6 +9,7 @@ const initialState = {
   appCreationStatus: 'idle',
   loadBooksStatus: 'idle',
   removing: false,
+  adding: false,
   error: null,
 };
 
@@ -110,9 +111,14 @@ const booksSlice = createSlice({
         ...state,
         error: error.message,
       }))
+      .addCase(postBook.pending, (state) => ({
+        ...state,
+        adding: true,
+      }))
       .addCase(postBook.fulfilled, (state, { payload }) => ({
         ...state,
         books: [...state.books, payload],
+        adding: false,
       }))
       .addCase(removeBook.pending, (state) => ({
         ...state,
