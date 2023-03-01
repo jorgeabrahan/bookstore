@@ -1,0 +1,45 @@
+.navbar {
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+
+.navbar, .navbar__content, .navbar__list, .navbar__button {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__content {
+  gap: 3rem;
+}
+
+.navbar__title {
+  color: #0290ff;
+}
+
+.navbar__list {
+  gap: 2rem;
+  list-style-type: none;
+}
+
+.navbar__list a {
+  text-transform: uppercase;
+  font-size: .8rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: #909090;
+}
+
+.navbar__list a.--active {
+  color: black;
+}
+
+.navbar__button {
+  border-radius: 50%;
+  padding: 0.5rem;
+  background: white;
+  border: solid 1px rgb(180, 180, 180);
+}
+
+.navbar__button span {
+  color: #0290ff;
+}
