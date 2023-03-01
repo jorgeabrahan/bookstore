@@ -52,6 +52,19 @@ export const loadBooks = createAsyncThunk('bookstore/load', (arg, { getState }) 
   })
 ));
 
+export const postBook = createAsyncThunk('bookstore/post', (book, { getState }) => (
+  new Promise((resolve, reject) => {
+    const state = getState();
+    axios.post(`${baseUrl}/apps/${state.books.apiId}/books`, book)
+      .then(() => {
+        resolve(book);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+));
+
 const booksSlice = createSlice({
   name: 'Books slice',
   initialState,
