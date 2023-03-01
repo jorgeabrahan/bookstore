@@ -1,0 +1,22 @@
+.categories__message {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.categories__filter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.categories__filter span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.categories__filter select {
+  padding: 0.5rem 1rem;
+}
