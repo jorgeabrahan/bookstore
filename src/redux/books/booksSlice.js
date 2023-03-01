@@ -95,6 +95,10 @@ const booksSlice = createSlice({
       .addCase(loadBooks.rejected, (state, { error }) => ({
         ...state,
         error: error.message,
+      }))
+      .addCase(postBook.fulfilled, (state, { payload }) => ({
+        ...state,
+        books: [...state.books, payload],
       }));
   },
 });
