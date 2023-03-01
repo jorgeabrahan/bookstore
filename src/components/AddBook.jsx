@@ -15,7 +15,7 @@ export default function AddBook() {
   const add = () => {
     if (book.title.trim().length === 0 || book.author.trim().length === 0) return;
     dispatch(addBook({
-      item_id: uuidv4(),
+      id: uuidv4(),
       ...book,
     }));
     titleInput.current.focus();
