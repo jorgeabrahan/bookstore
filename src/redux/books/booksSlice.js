@@ -32,6 +32,20 @@ const booksSlice = createSlice({
       ...state, apiId: payload, appCreationStatus: 'succeeded',
     }),
   },
+  extraReducers(builder) {
+    builder
+      .addCase(createBookstoreApp.pending, (state) => ({ ...state, appCreationStatus: 'loading' }))
+      .addCase(createBookstoreApp.fulfilled, (state, { payload }) => ({
+        ...state,
+        appCreationStatus: 'succeeded',
+        apiId: payload,
+      }))
+      .addCase(createBookstoreApp.rejected, (state, { error }) => ({
+        ...state,
+        appCreationStatus: 'failed',
+        error: error.message,
+      }));
+  },
 });
 
 export const { setBookstoreId } = booksSlice.actions;
