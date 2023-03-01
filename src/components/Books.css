@@ -3,8 +3,10 @@
   gap: 1rem;
 }
 
-.books-container, .books__divisor {
+.books-container,
+.books__divisor {
   --margin-divisor: 2rem;
+
   margin-block-start: var(--margin-divisor);
 }
 
@@ -13,7 +15,8 @@
   border: 1px solid #e8e8e8;
 }
 
-.book, .book__details {
+.book,
+.book__details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +26,7 @@
   border: 1px solid #e8e8e8;
   background-color: white;
   padding: 1.5rem;
+
   --separation: 2.8rem;
 }
 
@@ -82,7 +86,9 @@
 
 .oval {
   position: relative;
+
   --dimensions: 4.25rem;
+
   width: var(--dimensions);
   height: var(--dimensions);
 }
@@ -104,6 +110,7 @@
   stroke-dashoffset: 0;
   stroke-linecap: round;
 }
+
 .book__oval--progress circle {
   fill: none;
   stroke: hsl(214, 97%, 59%);
