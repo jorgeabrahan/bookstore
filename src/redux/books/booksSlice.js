@@ -8,6 +8,7 @@ const initialState = {
   apiId: null,
   appCreationStatus: 'idle',
   loadBooksStatus: 'idle',
+  removing: false,
   error: null,
 };
 
@@ -113,9 +114,14 @@ const booksSlice = createSlice({
         ...state,
         books: [...state.books, payload],
       }))
+      .addCase(removeBook.pending, (state) => ({
+        ...state,
+        removing: true,
+      }))
       .addCase(removeBook.fulfilled, (state, { payload }) => ({
         ...state,
         books: state.books.filter((book) => book.item_id !== payload),
+        removing: false,
       }));
   },
 });
