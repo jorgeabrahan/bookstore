@@ -23,8 +23,9 @@ export default function Books() {
   /* Effect to load books once the app is initialized */
   useEffect(() => {
     if (apiId === null) return;
+    if (books.length >= 1) return;
     dispatch(loadBooks());
-  }, [dispatch, apiId]);
+  }, [dispatch, apiId, books]);
 
   const booksList = books.map((book) => (
     <Book
