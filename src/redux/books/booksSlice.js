@@ -24,6 +24,34 @@ export const createBookstoreApp = createAsyncThunk('bookstore/create', () => (
   })
 ));
 
+export const loadBooks = createAsyncThunk('bookstore/load', (arg, { getState }) => (
+  new Promise((resolve, reject) => {
+    const state = getState();
+    axios.get(`${baseUrl}/apps/${state.books.apiId}/books`)
+      .then(({ data }) => {
+        if (data === '') {
+          resolve([]);
+          return;
+        }
+        const books = [];
+        Object.entries(data).forEach((arr) => {
+          const [id, [book]] = arr;
+          const { title, category, author } = book;
+          books.push({
+            item_id: id,
+            title,
+            category,
+            author,
+          });
+        });
+        resolve(books);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+));
+
 const booksSlice = createSlice({
   name: 'Books slice',
   initialState,
