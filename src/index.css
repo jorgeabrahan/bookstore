@@ -60,6 +60,10 @@ button {
   color: #939293;
 }
 
+.mt-1rem {
+  margin-top: 1rem;
+}
+
 .mb-0-5rem {
   margin-bottom: 0.5rem;
 }
@@ -74,4 +78,18 @@ button {
 
 .flex-1 {
   flex: 1;
+}
+
+.blue-button {
+  padding: 0.6rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #0290ff;
+  text-align: center;
+  color: #fff;
+  border: none;
+}
+
+.bold {
+  font-weight: bold;
 }
