@@ -56,7 +56,7 @@ export default function AddBook() {
           value={book.author}
           onChange={({ target }) => onChange(target)}
         />
-        <Button run={add} text="ADD BOOK" disabled={adding} />
+        <Button run={add} text="ADD BOOK" disabled={adding} className="blue-button bold" />
         {error !== '' && <p>{error}</p>}
       </form>
     </div>
