@@ -72,6 +72,16 @@ const booksSlice = createSlice({
         ...state,
         appCreationStatus: 'failed',
         error: error.message,
+      }))
+      .addCase(loadBooks.pending, (state) => ({ ...state, loadBooksStatus: 'loading' }))
+      .addCase(loadBooks.fulfilled, (state, { payload }) => ({
+        ...state,
+        loadBooksStatus: 'succeeded',
+        books: payload,
+      }))
+      .addCase(loadBooks.rejected, (state, { error }) => ({
+        ...state,
+        error: error.message,
       }));
   },
 });
